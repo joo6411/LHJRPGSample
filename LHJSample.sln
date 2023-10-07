@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LHJRPGSampleServer", "LHJSample\LHJSample.vcxproj", "{D6EF5545-E99B-4478-9C11-673D3B3F9437}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Query", "Query", "{025FB72C-2A4F-46DB-8CDF-82C8070726DC}"
+	ProjectSection(SolutionItems) = preProject
+		01_Account.sql = 01_Account.sql
+		02_Account_Table.sql = 02_Account_Table.sql
+		03_Account_Procedure.sql = 03_Account_Procedure.sql
+		04_Account_Init.sql = 04_Account_Init.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{2BCA7376-AAC3-42CB-8DE4-28A646EDDB69}"
+	ProjectSection(SolutionItems) = preProject
+		Config.xml = Config.xml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LHJSampleClientCS", "LHJSampleClientCS\LHJSampleClientCS.csproj", "{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Debug|Any CPU.Build.0 = Debug|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Debug|x64.ActiveCfg = Debug|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Debug|x64.Build.0 = Debug|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Debug|x86.ActiveCfg = Debug|Win32
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Debug|x86.Build.0 = Debug|Win32
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Release|Any CPU.ActiveCfg = Release|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Release|Any CPU.Build.0 = Release|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Release|x64.ActiveCfg = Release|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Release|x64.Build.0 = Release|x64
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Release|x86.ActiveCfg = Release|Win32
+		{D6EF5545-E99B-4478-9C11-673D3B3F9437}.Release|x86.Build.0 = Release|Win32
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Debug|x64.Build.0 = Debug|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Release|x64.ActiveCfg = Release|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Release|x64.Build.0 = Release|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF31D479-EE76-40C0-A9B4-6F08B7AAC465}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54DEEFE6-F875-4D9B-8A87-9455ACDA5446}
+	EndGlobalSection
+EndGlobal
