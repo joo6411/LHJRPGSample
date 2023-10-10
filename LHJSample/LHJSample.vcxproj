@@ -24,7 +24,7 @@
     <ProjectGuid>{d6ef5545-e99b-4478-9c11-673d3b3f9437}</ProjectGuid>
     <RootNamespace>LHJSample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>LHJRPGSampleServer</ProjectName>
+    <ProjectName>LHJSampleServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

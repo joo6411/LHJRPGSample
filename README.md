@@ -7,7 +7,7 @@ git 주소 : https://github.com/joo6411/LHJSample.git
 c++20 이상에서 작동하고 DB로 Redis와 MS-SQL Server를 사용합니다
 각 서버의 ip와 port는 Config.xml에서 변경 가능합니다.
 
-iocp 기반의 채팅서버로 멀티스레드를 사용하여 워커스레드 4개와 패킷프로세서 1개, Redis 스레드 1개를 사용합니다.
+iocp 기반의 채팅서버로 멀티스레드를 사용하여 워커스레드 4개와 패킷프로세서 1개 사용합니다.
 
 DB생성은 
 01_Account.sql
@@ -29,4 +29,3 @@ DB생성은
  - Redis에 채팅 로그 저장
  - sql server에 계정정보 저장
  - DB connection 비동기로 돌리기
- - 
