@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class NetworkMain
 {
+    string serverIp;
+    int serverPort;
     ClientNetwork Network = new ClientNetwork();
 
     bool IsNetworkThreadRunning = false;
@@ -20,12 +22,11 @@ public class NetworkMain
     Queue<PacketData> RecvPacketQueue = new Queue<PacketData>();
     Queue<byte[]> SendPacketQueue = new Queue<byte[]>();
 
-    Dictionary<PACKET_ID, Action<byte[]>> PacketFuncDic = new Dictionary<PACKET_ID, Action<byte[]>>();
+    public Dictionary<PACKET_ID, Action<byte[]>> PacketFuncDic = new Dictionary<PACKET_ID, Action<byte[]>>();
 
+        /*
     void SetPacketHandler()
     {
-        /*
-        PacketFuncDic.Add(PACKET_ID.ACK_LOGIN, PacketProcess_AckLogin);
         PacketFuncDic.Add(PACKET_ID.ACK_ROOM_ENTER, PacketProcess_AckRoomEnter);
         PacketFuncDic.Add(PACKET_ID.ACK_LOBBY_INFO, PacketProcess_AckLobbyInfo);
         PacketFuncDic.Add(PACKET_ID.NOTIFY_LOBBY_INFO, PacketProcess_NotifyLobbyInfo);
@@ -35,10 +36,15 @@ public class NetworkMain
         PacketFuncDic.Add(PACKET_ID.NOTIFY_ROOM_INFO, PacketProcess_NotifyRoomInfo);
         PacketFuncDic.Add(PACKET_ID.ACK_ROOM_LEAVE, PacketProcess_AckRoomLeave);
         PacketFuncDic.Add(PACKET_ID.NOTIFY_ROOM_LEAVE, PacketProcess_NotifyRoomLeave);
+    }
         */
+
+    public void ResetPacketHandler()
+    {
+        PacketFuncDic.Clear();
     }
 
-    void Init()
+    public void Init(string ip, int port)
     {
         PacketBuffer.Init((8096 * 10), PacketDef.PACKET_HEADER_SIZE, 1024);
 
@@ -54,6 +60,8 @@ public class NetworkMain
         dispatcherUITimer.Start();
 
         IsBackGroundProcessRunning = true;
+        serverIp = ip;
+        serverPort = port;
 
         /*
         dispatcherUITimer = new System.Windows.Threading.DispatcherTimer();
@@ -61,8 +69,11 @@ public class NetworkMain
         dispatcherUITimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
         dispatcherUITimer.Start();
         */
+    }
 
-        SetPacketHandler();
+    public bool Connect()
+    {
+        return Network.Connect(serverIp, serverPort);
     }
 
     void PacketProcess(PacketData packet)

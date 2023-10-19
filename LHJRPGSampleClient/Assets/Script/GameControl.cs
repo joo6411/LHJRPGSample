@@ -1,19 +1,28 @@
+using LHJSampleClientCS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
-    NetworkMain network;
+    public string serverIP;
+    public int serverPort;
+    public Player player;
 
-    void Start()
-    {
-        network = new NetworkMain();
-    }
+    public static GameControl instance;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            player = new Player();
+            player.Init(serverIP, serverPort);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
