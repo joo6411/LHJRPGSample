@@ -1,6 +1,5 @@
 #include "ChatServer.h"
 #include "User/UserManager.h"
-#include "Room/RoomManager.h"
 #include "DB/AccountDB.h"
 #include "PacketManager.h"
 #include <vector>
@@ -39,9 +38,6 @@ void ChatServer::Init(const UINT32 maxClient)
 	UINT32 startRoomNumber = 0;
 	UINT32 maxRoomCount = 10;
 	UINT32 maxRoomUserCount = 4;
-
-	mRoomManager = new RoomManager;
-	mRoomManager->Init(startRoomNumber, maxRoomCount, maxRoomUserCount);
 
 	mAccountDB = new AccountDB();
 	mAccountDB->Init();
@@ -84,8 +80,6 @@ bool ChatServer::Run(const UINT32 maxClient)
 	};
 
 	mPacketManager->SendPacketFunc = sendPacketFunc;
-	mRoomManager->SetSendPacketFunc(sendPacketFunc);
-	//mRoomManager->SendPacketFunc = mPacketManager->SendPacketFunc;
 	mUserManager->SetSendPacketFunc(sendPacketFunc);
 	
 	if (!mPacketManager->Run())

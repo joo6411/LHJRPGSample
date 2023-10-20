@@ -2,12 +2,10 @@
 #include "State/UserState.h"
 #include "../ServerNetwork/IOCPServer.h"
 #include "UserManager.h"
-#include "../Room/RoomManager.h"
 #include "../ResultCode.h"
 #include "State/UserStateConnected.h"
 #include "State/UserStateDisconnect.h"
-#include "State/UserStateInLobby.h"
-#include "State/UserStateInRoom.h"
+#include "State/UserStateIngame.h"
 #include "State/UserStateNone.h"
 
 void User::Init(const INT32 index, UserManager* userManager, RoomManager* roomManager)
@@ -17,8 +15,7 @@ void User::Init(const INT32 index, UserManager* userManager, RoomManager* roomMa
 	mStates[UserState::None] = new UserStateNone(this);
 	mStates[UserState::Connected] = new UserStateConnected(this);
 	mStates[UserState::Disconnect] = new UserStateDisConnect(this);
-	mStates[UserState::InLobby] = new UserStateInLobby(this);
-	mStates[UserState::InRoom] = new UserStateInRoom(this);
+	mStates[UserState::InGame] = new UserStateInGame(this);
 	ChangeState(UserState::None);
 	ResetRecvFunction();
 	mUserManager = userManager;
@@ -39,25 +36,10 @@ void User::Clear()
 
 int User::SetLogin(std::string& userID_)
 {
-	ChangeState(UserState::InLobby);
+	ChangeState(UserState::InGame);
 	mUserID = userID_;
 
 	return 0;
-}
-
-RESULT_CODE User::EnterRoom(INT32 roomIndex_)
-{
-	RESULT_CODE result = mRoomManager->EnterUser(roomIndex_, this);
-	mRoomIndex = roomIndex_;
-	ChangeState(UserState::InRoom);
-	return result;
-}
-
-RESULT_CODE User::LeaveRoom()
-{
-	RESULT_CODE result = mRoomManager->LeaveUser(mRoomIndex, this);
-	ChangeState(UserState::InLobby);
-	return result;
 }
 
 void User::SetPacketData(const UINT32 dataSize_, char* pData_)
@@ -131,12 +113,6 @@ void User::ResetRecvFunction()
 {
 	recvFuntionDictionary[(int)PACKET_ID::REQ_CREATE_ACCOUNT] = [](UINT16 packetSize, char* packet)-> void { return; };
 	recvFuntionDictionary[(int)PACKET_ID::REQ_LOGIN] = [](UINT16 packetSize, char* packet)-> void { return; };
-	recvFuntionDictionary[(int)PACKET_ID::REQ_LOBBY_INFO] = [](UINT16 packetSize, char* packet)-> void { return; };
-	//mRecvFuntionDictionary[(int)RedisTaskID::RESPONSE_LOGIN] = &PacketManager::ProcessLoginDBResult;
-	recvFuntionDictionary[(int)PACKET_ID::REQ_ROOM_ENTER] = [](UINT16 packetSize, char* packet)-> void { return; };
-	recvFuntionDictionary[(int)PACKET_ID::REQ_ROOM_INFO] = [](UINT16 packetSize, char* packet)-> void { return; };
-	recvFuntionDictionary[(int)PACKET_ID::REQ_ROOM_LEAVE] = [](UINT16 packetSize, char* packet)-> void { return; };
-	recvFuntionDictionary[(int)PACKET_ID::REQ_ROOM_CHAT] = [](UINT16 packetSize, char* packet)-> void { return; };
 }
 
 bool User::CreateAccount(std::string& userID, std::string& password)
@@ -147,14 +123,4 @@ bool User::CreateAccount(std::string& userID, std::string& password)
 RESULT_CODE User::CheckLoginable(UINT32 clientIndex_, std::string& userID, std::string& password)
 { 
 	return mUserManager->CheckLoginable(clientIndex_, userID, password);
-}
-
-std::vector<int> User::GetRoomList()
-{
-	return mRoomManager->GetRoomList();
-}
-
-Room* User::GetRoom()
-{
-	return mRoomManager->GetRoomByNumber(GetCurrentRoomIndex());
 }

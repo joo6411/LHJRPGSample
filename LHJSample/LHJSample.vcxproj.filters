@@ -39,12 +39,6 @@
     <ClCompile Include="RedisManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Room\Room.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Room\RoomManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Config\ConfigLoader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -60,10 +54,7 @@
     <ClCompile Include="User\State\UserStateDisconnect.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="User\State\UserStateInLobby.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="User\State\UserStateInRoom.cpp">
+    <ClCompile Include="User\State\UserStateInGame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,12 +89,6 @@
     <ClInclude Include="ResultCode.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Room\Room.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Room\RoomManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Config\ConfigLoader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -128,10 +113,7 @@
     <ClInclude Include="User\State\UserStateDisconnect.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="User\State\UserStateInLobby.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="User\State\UserStateInRoom.h">
+    <ClInclude Include="User\State\UserStateInGame.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,11 +6,7 @@ enum class UserState
 	None,
     Connected,
     Disconnect,
-    //Login,
-    InLobby,
-    RoomEnter,
-    InRoom,
-    RoomExit,
+    InGame,
 };
 
 class User;
