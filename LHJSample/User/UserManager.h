@@ -6,7 +6,6 @@
 
 class PacketManager;
 class AccountDB;
-class RoomManager;
 
 class UserManager
 {
@@ -14,7 +13,7 @@ public:
 	UserManager() = default;
 	~UserManager() = default;
 
-	void Init(const INT32 maxUserCount_, AccountDB* accountDB, RoomManager* roomManager);
+	void Init(const INT32 maxUserCount_, AccountDB* accountDB);
 	void SetSendPacketFunc(std::function<void(UINT32, UINT32, char*)> sendpacketfunc);
 	INT32 GetCurrentUserCnt() { return mCurrentUserCnt; }
 	INT32 GetMaxUserCnt() { return mMaxUserCnt; }

@@ -8,8 +8,6 @@
 
 class ClientInfo;
 class UserManager;
-class RoomManager;
-class Room;
 enum class RESULT_CODE : unsigned short;
 
 class User
@@ -20,11 +18,9 @@ public:
 	User() = default;
 	~User() = default;
 
-	void Init(const INT32 index, UserManager* userManager, RoomManager* roomManager);
+	void Init(const INT32 index, UserManager* userManager);
 	void Clear();
 	int SetLogin(std::string& userID_);
-	RESULT_CODE EnterRoom(INT32 roomIndex_);
-	RESULT_CODE LeaveRoom();
 	INT32 GetCurrentRoomIndex() { return mRoomIndex; }
 	INT32 GetNetConnIdx() { return mIndex; }
 
@@ -36,8 +32,6 @@ public:
 	void ResetRecvFunction();
 	bool CreateAccount(std::string& userID, std::string& password);
 	RESULT_CODE CheckLoginable(UINT32 clientIndex_, std::string&  userID, std::string& password);
-	std::vector<int> GetRoomList();
-	Room* GetRoom();
 
 	std::unordered_map<int, std::function<void(UINT16, char*)>> recvFuntionDictionary;
 	std::function<void(UINT32, UINT32, char*)> sendPacketFunc;
@@ -58,5 +52,4 @@ private:
 	char* mPacketDataBuffer = nullptr;
 
 	UserManager* mUserManager;
-	RoomManager* mRoomManager;
 };

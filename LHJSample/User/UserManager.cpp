@@ -1,7 +1,7 @@
 #include "UserManager.h"
 #include "../DB/AccountDB.h"
 
-void UserManager::Init(const INT32 maxUserCount_, AccountDB* accountDB, RoomManager* roomManager)
+void UserManager::Init(const INT32 maxUserCount_, AccountDB* accountDB)
 {
 	mMaxUserCnt = maxUserCount_;
 	mUserObjPool = std::vector<User*>(mMaxUserCnt);
@@ -10,7 +10,7 @@ void UserManager::Init(const INT32 maxUserCount_, AccountDB* accountDB, RoomMana
 	for (auto i = 0; i < mMaxUserCnt; i++)
 	{
 		mUserObjPool[i] = new User();
-		mUserObjPool[i]->Init(i, this, roomManager);
+		mUserObjPool[i]->Init(i, this);
 	}
 }
 

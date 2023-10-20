@@ -8,7 +8,7 @@
 #include "State/UserStateIngame.h"
 #include "State/UserStateNone.h"
 
-void User::Init(const INT32 index, UserManager* userManager, RoomManager* roomManager)
+void User::Init(const INT32 index, UserManager* userManager)
 {
 	mIndex = index;
 	mPacketDataBuffer = new char[PACKET_DATA_BUFFER_SIZE];
@@ -19,7 +19,6 @@ void User::Init(const INT32 index, UserManager* userManager, RoomManager* roomMa
 	ChangeState(UserState::None);
 	ResetRecvFunction();
 	mUserManager = userManager;
-	mRoomManager = roomManager;
 }
 
 void User::Clear()

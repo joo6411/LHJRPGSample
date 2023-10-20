@@ -14,12 +14,6 @@ ChatServer::~ChatServer()
 		mUserManager = nullptr;
 	}
 
-	if (mRoomManager)
-	{
-		delete mRoomManager;
-		mUserManager = nullptr;
-	}
-
 	if (mAccountDB)
 	{
 		delete mAccountDB;
@@ -43,7 +37,7 @@ void ChatServer::Init(const UINT32 maxClient)
 	mAccountDB->Init();
 
 	mUserManager = new UserManager;
-	mUserManager->Init(maxClient, mAccountDB, mRoomManager);
+	mUserManager->Init(maxClient, mAccountDB);
 
 	mPacketManager = new PacketManager();
 	mPacketManager->Init(maxClient, mUserManager);

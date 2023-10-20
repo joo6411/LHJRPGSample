@@ -6,8 +6,6 @@
 #include <mutex>
 
 class AccountDB;
-class RoomManager;
-class RedisManager;
 class UserManager;
 class PacketManager;
 
@@ -28,7 +26,5 @@ public:
 private:
 	PacketManager* mPacketManager;
 	AccountDB* mAccountDB;
-	RoomManager* mRoomManager;
-	//RedisManager* mRedisMgr;
 	UserManager* mUserManager;
 };
